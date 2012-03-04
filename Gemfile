@@ -1,17 +1,32 @@
-source 'https://rubygems.org'
+source :rubygems
 
-gem 'rails', '3.2.1'
+# Server requirements (defaults to WEBrick)
+# gem 'thin'
+# gem 'mongrel'
+
+# Project requirements
+gem 'rake'
+gem 'sinatra-flash', :require => 'sinatra/flash'
+
+# Component requirements
+gem 'erubis', "~> 2.7.0"
+gem 'activerecord', :require => "active_record"
 gem 'pg'
-gem 'jquery-rails'
-gem "money"
-gem 'gotcha', :git => "https://github.com/vquaiato/gotcha.git"
 
-group :development do
-  gem 'thin'
-end
+# Test requirements
+gem 'rr', :group => "test"
+gem 'rspec', :group => "test"
+gem 'rack-test', :require => "rack/test", :group => "test"
+gem 'valid_attribute', '1.2.0', :group => "test"
 
-group :development, :test do
-  gem 'rspec-rails', '2.8.1'
-  gem 'valid_attribute', '1.2.0'
-  gem 'database_cleaner'
-end
+
+# Padrino Stable Gem
+# gem 'padrino', '0.10.5'
+
+# Or Padrino Edge
+gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
+
+# Or Individual Gems
+# %w(core gen helpers cache mailer admin).each do |g|
+#   gem 'padrino-' + g, '0.10.5'
+# end
